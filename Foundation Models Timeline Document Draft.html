@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation Model Timeline</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+      body {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        font-family: 'Segoe UI', Arial, sans-serif; /* Cleaner sans-serif for modern tech docs */
+        color: #333;
+        background-color: #fff;
+        line-height: 1.6;
+      }
+
+      /* Document Header */
+      h1 {
+        text-align: center;
+        font-size: 28pt;
+        margin-bottom: 20px;
+        color: #2c3e50;
+        border-bottom: 2px solid #2c3e50;
+        padding-bottom: 15px;
+      }
+
+      .intro {
+        font-size: 11pt;
+        text-align: justify;
+        margin-bottom: 40px;
+        color: #555;
+      }
+
+      /* Timeline Container */
+      .timeline {
+        position: relative;
+        padding: 20px 0;
+        margin-left: 20px;
+      }
+
+      /* Vertical Line */
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 3px;
+        background: #e0e0e0;
+      }
+
+      /* Year Markers */
+      .year-marker {
+        font-size: 18pt;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .year-marker::before {
+        content: '';
+        position: absolute;
+        left: -6px; /* Center on the line (line is 3px wide, dot is 15px) */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        background: #2c3e50;
+        border-radius: 50%;
+        border: 3px solid #fff;
+      }
+
+      /* Model Entry Card */
+      .model-entry {
+        margin-bottom: 25px;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      /* Small dot for each model */
+      .model-entry::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: 10px;
+        width: 11px;
+        height: 11px;
+        background: #fff;
+        border: 2px solid #999;
+        border-radius: 50%;
+      }
+
+      /* Company Color Coding Borders */
+      .border-google {
+        border-color: #4285f4 !important;
+        background-color: #4285f4 !important;
+      }
+      .border-openai {
+        border-color: #10a37f !important;
+        background-color: #10a37f !important;
+      }
+      .border-meta {
+        border-color: #8c52ff !important;
+        background-color: #8c52ff !important;
+      }
+      .border-anthropic {
+        border-color: #da7756 !important;
+        background-color: #da7756 !important;
+      }
+
+      /* Text Color classes */
+      .text-google {
+        color: #4285f4;
+      }
+      .text-openai {
+        color: #10a37f;
+      }
+      .text-meta {
+        color: #6929c4;
+      }
+      .text-anthropic {
+        color: #c44d29;
+      }
+
+      .model-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 5px;
+      }
+
+      .model-name {
+        font-size: 14pt;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .model-date {
+        font-size: 10pt;
+        color: #777;
+        font-style: italic;
+      }
+
+      .model-meta {
+        font-size: 10pt;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .company-tag {
+        font-weight: bold;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 2px 0;
+      }
+
+      .model-details {
+        font-size: 10.5pt;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-left: 4px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .model-details.openai {
+        border-left-color: #10a37f;
+      }
+      .model-details.google {
+        border-left-color: #4285f4;
+      }
+      .model-details.meta {
+        border-left-color: #8c52ff;
+      }
+      .model-details.anthropic {
+        border-left-color: #da7756;
+      }
+
+      .detail-item {
+        margin-bottom: 4px;
+      }
+
+      .detail-label {
+        font-weight: bold;
+        color: #444;
+      }
+
+      /* Conclusion Section */
+      .conclusion {
+        margin-top: 60px;
+        border-top: 2px solid #e0e0e0;
+        padding-top: 30px;
+      }
+
+      .conclusion h2 {
+        font-size: 20pt;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
+      .conclusion ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+
+      .conclusion li {
+        margin-bottom: 8px;
+        font-size: 11pt;
+      }
+    </style>
+  </head>
+  <body style="">
+    <h1>Foundation Model Timeline: Evolution of Transformers and Large Language Models (2017-2026)</h1>
+
+    <div class="intro">
+      <p>
+        Foundation models represent a paradigm shift in artificial intelligence, moving from task-specific models to
+        general-purpose systems trained on vast amounts of data. This timeline traces the rapid evolution of these
+        systems, starting from the seminal Transformer architecture in 2017 to the reasoning-capable and agentic models
+        of 2026. This period has witnessed an exponential increase in parameter counts, the emergence of multimodal
+        capabilities, and a fundamental change in how humans interact with machine intelligence.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <!-- 2017 -->
+      <div class="year-marker">2017</div>
+
+      <div class="model-entry">
+        <div class="model-entry-dot border-google"></div>
+        <div class="model-header">
+          <span class="model-name">Transformer Architecture ("Attention Is All You Need")</span>
+          <span class="model-date">June 2017</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google Research</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Self-attention mechanism, encoder-decoder architecture,
+            parallel processing capabilities.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Replaced recurrent neural networks (RNNs/LSTMs), serving as
+            the fundamental architectural basis for all modern LLMs.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2018 -->
+      <div class="year-marker">2018</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-1</span>
+          <span class="model-date">June 2018</span>
+        </div>
+        <div class="model-meta"><span class="company-tag text-openai">OpenAI</span> &nbsp;|&nbsp; 117M Parameters</div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Generative pre-training followed by discriminative
+            fine-tuning, decoder-only transformer.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Demonstrated the effectiveness of unsupervised pre-training
+            on diverse text combined with supervised fine-tuning.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">BERT</span>
+          <span class="model-date">October 2018</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google AI</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Bidirectional training, masked language modeling (MLM),
+            encoder-only architecture.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Superior understanding of context and relationships between
+            words; revolutionized NLP benchmarks.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2019 -->
+      <div class="year-marker">2019</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-2</span>
+          <span class="model-date">February 2019</span>
+        </div>
+        <div class="model-meta"><span class="company-tag text-openai">OpenAI</span> &nbsp;|&nbsp; 1.5B Parameters</div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Significantly larger scale, improved coherent text
+            generation capabilities.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Demonstrated emergent capabilities with scale; initially
+            withheld from full release due to safety concerns.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">XLNet</span>
+          <span class="model-date">June 2019</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google / CMU</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Permutation language modeling, autoregressive pre-training.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Overcame limitations of BERT by capturing bidirectional
+            context without masking corruption.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">RoBERTa</span>
+          <span class="model-date">August 2019</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-meta">Facebook AI</span>
+        </div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Robustly optimized BERT approach, dynamic masking,
+            significantly larger training dataset.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Significantly improved upon BERT's performance across
+            standard benchmarks.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">T5 (Text-to-Text Transfer Transformer)</span>
+          <span class="model-date">October 2019</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google AI</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Unified text-to-text framework where every NLP task is cast
+            as feeding text input to generate text output.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Simplified transfer learning by using a consistent interface
+            for translation, summarization, and classification.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="year-marker">2020</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-3</span>
+          <span class="model-date">June 2020</span>
+        </div>
+        <div class="model-meta"><span class="company-tag text-openai">OpenAI</span> &nbsp;|&nbsp; 175B Parameters</div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Massive scale (100x larger than GPT-2), few-shot learning,
+            in-context learning.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Achieved revolutionary performance without task-specific
+            fine-tuning; showcased distinct emergent abilities.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="year-marker">2021</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Codex</span>
+          <span class="model-date">August 2021</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Specialized fine-tuning for code generation; powers GitHub
+            Copilot.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Demonstrated that LLMs could effectively understand and
+            generate functional programming code.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="year-marker">2022</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">PaLM</span>
+          <span class="model-date">April 2022</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google AI</span> &nbsp;|&nbsp; 540B Parameters
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Pathways architecture, dense decoder-only model,
+            chain-of-thought prompting.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> State-of-the-art performance on difficult reasoning and
+            arithmetic tasks.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-3.5 / ChatGPT</span>
+          <span class="model-date">November 30, 2022</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Instruction tuning, Reinforcement Learning from Human
+            Feedback (RLHF), chat-optimized interface.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Made high-quality conversational AI accessible to the
+            general public, triggering viral global adoption.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="year-marker">2023</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">LLaMA 1</span>
+          <span class="model-date">February 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-meta">Meta AI</span> &nbsp;|&nbsp; 7B - 65B Parameters
+        </div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Open-source research release, highly efficient training on
+            public data.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Democratized access to powerful LLMs, sparking a wave of
+            open-source innovation.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-4</span>
+          <span class="model-date">March 14, 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Multimodal capabilities (text + images), significantly
+            improved reasoning and accuracy.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Major leap in capabilities, achieving professional-level
+            performance on human exams (e.g., Bar Exam).
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Claude 1</span>
+          <span class="model-date">March 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-anthropic">Anthropic</span>
+        </div>
+        <div class="model-details anthropic">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Constitutional AI training method, focus on helpfulness and
+            safety.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Established a strong focus on AI alignment and
+            "harmlessness" in commercial models.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">PaLM 2</span>
+          <span class="model-date">May 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google AI</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Improved multilingual capabilities, stronger reasoning,
+            multiple sizes (Gecko, Otter, Bison, Unicorn).
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Powered the Bard chatbot (later Gemini) with enhanced
+            efficiency and language support.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">LLaMA 2</span>
+          <span class="model-date">July 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-meta">Meta AI</span> &nbsp;|&nbsp; 7B - 70B Parameters
+        </div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Released for commercial use, improved safety alignment via
+            RLHF.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Enabled widespread commercial application of open-weights
+            models.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Claude 2</span>
+          <span class="model-date">July 11, 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-anthropic">Anthropic</span>
+        </div>
+        <div class="model-details anthropic">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> 100K token context window, significantly improved
+            performance over Claude 1.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Pioneered massive context windows for processing entire
+            documents and books.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Gemini (formerly Bard)</span>
+          <span class="model-date">December 2023</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google DeepMind</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Native multimodal training from the ground up (text, code,
+            images, video), integrated with Google services.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Demonstrated strong performance across modalities without
+            stitching separate components together.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="year-marker">2024</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Claude 3 (Opus, Sonnet, Haiku)</span>
+          <span class="model-date">March 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-anthropic">Anthropic</span>
+        </div>
+        <div class="model-details anthropic">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Three distinct model sizes, vision capabilities, reduced
+            refusal rates.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> The Opus model matched or exceeded GPT-4 on most major
+            benchmarks.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">LLaMA 3</span>
+          <span class="model-date">April 18, 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-meta">Meta AI</span> &nbsp;|&nbsp; 8B &amp; 70B Parameters
+        </div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Trained on 15 trillion tokens, significantly improved
+            reasoning and coding.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Established itself as the most capable open-source model
+            available at release.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-4o</span>
+          <span class="model-date">May 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Native multimodal (text, audio, vision), faster inference,
+            higher efficiency.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Enabled real-time voice interaction with emotional nuance;
+            widely deployed via free tier.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">LLaMA 3.1</span>
+          <span class="model-date">July 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-meta">Meta AI</span> &nbsp;|&nbsp; Up to 405B Parameters
+        </div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Massive 405B scale, 128K context window, multilingual
+            support (8 languages).
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> First open-weights model to truly rival the largest
+            proprietary frontier models (GPT-4o).
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Gemini 1.5</span>
+          <span class="model-date">September 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google DeepMind</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Extended context window (up to 1M+ tokens), dramatically
+            improved efficiency.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Enabled "infinite context" applications, processing massive
+            codebases and video hours in one prompt.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">LLaMA 3.2</span>
+          <span class="model-date">September 25, 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-meta">Meta AI</span> &nbsp;|&nbsp; 1B - 90B Parameters
+        </div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Lightweight models optimized for edge devices, introduced
+            vision capabilities to the LLaMA family.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Enabled powerful AI applications directly on mobile and edge
+            devices.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Claude 3.5 (Sonnet)</span>
+          <span class="model-date">October 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-anthropic">Anthropic</span>
+        </div>
+        <div class="model-details anthropic">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Superior coding abilities, "Computer Use" agentic
+            capabilities.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Set a new standard for software engineering tasks and
+            agentic tool use.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">LLaMA 3.3</span>
+          <span class="model-date">December 6, 2024</span>
+        </div>
+        <div class="model-meta"><span class="company-tag text-meta">Meta AI</span> &nbsp;|&nbsp; 70B Parameters</div>
+        <div class="model-details meta">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Highly efficient distillation, competitive with much larger
+            models.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Matched the performance of the 405B model in a much smaller
+            70B form factor.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Gemini 2.0</span>
+          <span class="model-date">December 11, 2024</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-google">Google DeepMind</span>
+        </div>
+        <div class="model-details google">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Enhanced multimodal reasoning, native tool use capabilities.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Advanced agentic capabilities with state-of-the-art
+            performance across diverse tasks.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="year-marker">2025</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-4.5</span>
+          <span class="model-date">February 27, 2025</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Bridge model featuring significantly enhanced reasoning
+            capabilities.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Marked significant improvements in handling complex,
+            multi-step tasks.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-4.1</span>
+          <span class="model-date">April 14, 2025</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> First production model to natively integrate deep reasoning.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Brought advanced "System 2" reasoning thinking into standard
+            inference workflows.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Claude 4 (Opus, Sonnet)</span>
+          <span class="model-date">May 22, 2025</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-anthropic">Anthropic</span>
+        </div>
+        <div class="model-details anthropic">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Next-generation reasoning, improved safety measures and
+            robustness.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Delivered advanced capability across diverse scientific and
+            creative domains.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-5</span>
+          <span class="model-date">August 7, 2025</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Unified system with smart routing; combines fast response
+            with deep reasoning models.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Benchmark:</span> Achieved 94.6% on complex reasoning tasks.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Fully integrated agentic workflows and true multimodal
+            mastery.
+          </div>
+        </div>
+      </div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">Claude 4.5 (Family)</span>
+          <span class="model-date">September - November 2025</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-anthropic">Anthropic</span>
+        </div>
+        <div class="model-details anthropic">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Incremental architectural improvements across Opus, Sonnet,
+            and Haiku.
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Breakthrough:</span> Maintained a competitive edge in specialized, high-stakes
+            tasks.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2026 -->
+      <div class="year-marker">2026 (Present)</div>
+
+      <div class="model-entry">
+        <div class="model-header">
+          <span class="model-name">GPT-5.2</span>
+          <span class="model-date">December 2025 / January 2026</span>
+        </div>
+        <div class="model-meta">
+          <span class="company-tag text-openai">OpenAI</span>
+        </div>
+        <div class="model-details openai">
+          <div class="detail-item">
+            <span class="detail-label">Key Features:</span> Latest production iteration with refined efficiency and
+            alignment.
+          </div>
+          <div class="detail-item"><span class="detail-label">Status:</span> Current leading production model.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="conclusion">
+      <h2>Key Trends &amp; Observations</h2>
+      <ul>
+        <li>
+          <strong>Exponential Growth:</strong> Parameters have scaled from 117M (GPT-1) to over 1 Trillion equivalent in
+          sparse systems, though recent trends also favor efficient, smaller dense models (e.g., LLaMA 3.3).
+        </li>
+        <li>
+          <strong>Multimodal Shift:</strong> A clear evolution from text-only inputs to native multimodal systems
+          capable of seeing, hearing, and speaking in real-time (GPT-4o, Gemini).
+        </li>
+        <li>
+          <strong>Reasoning &amp; Agents:</strong> The frontier has moved beyond simple prediction to "System 2" reasoning
+          and agentic capabilities, where models can use tools to perform actions (Claude 3.5, GPT-5).
+        </li>
+        <li>
+          <strong>Open Source Democratization:</strong> Meta's LLaMA family has fundamentally changed the landscape,
+          providing powerful open-weights alternatives to proprietary models.
+        </li>
+        <li>
+          <strong>Context Explosion:</strong> Context windows have grown from 1,024 tokens to over 1 Million tokens,
+          enabling entire books and codebases to be processed at once.
+        </li>
+        <li>
+          <strong>Safety &amp; Alignment:</strong> Companies like Anthropic have differentiated themselves by prioritizing
+          "Constitutional AI" and safety-first architectures.
+        </li>
+      </ul>
+    </div>
+  
+
+</body></html>

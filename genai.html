@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI Lab1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5; /* Modern Indigo */
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 900px; 
+            background: var(--bg-card); 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 { 
+            font-weight: 600; 
+            font-size: 2rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Modern Tabs Logic */
+        .tabs-wrapper {
+            display: flex;
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .tab-link { 
+            flex: 1;
+            text-align: center;
+            padding: 12px; 
+            border-radius: 8px;
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .tab-link:hover { color: var(--primary); }
+        
+        /* Hidden Radio Buttons */
+        input[type="radio"] { display: none; }
+
+        /* Content Areas */
+        .tab-content { 
+            display: none; 
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Show content based on radio button */
+        #tab1:checked ~ .content1, #tab2:checked ~ .content2, 
+        #tab3:checked ~ .content3, #tab4:checked ~ .content4 { display: block; }
+
+        /* Highlight Active Tab */
+        #tab1:checked ~ .tabs-wrapper label[for="tab1"], 
+        #tab2:checked ~ .tabs-wrapper label[for="tab2"],
+        #tab3:checked ~ .tabs-wrapper label[for="tab3"], 
+        #tab4:checked ~ .tabs-wrapper label[for="tab4"] {
+            background: white; 
+            color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media Display */
+        .aim-box {
+            background: #eef2ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 4px 8px 8px 4px;
+            margin-bottom: 25px;
+        }
+
+        .aim-box strong { color: var(--primary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }
+        .aim-text { display: block; margin-top: 5px; color: #3730a3; font-size: 1.05rem; }
+
+        .media-viewer { 
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img { width: 100%; height: auto; display: block; }
+        iframe { width: 100%; height: 600px; border: none; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Generative AI Lab 1</h1>
+        <p class="subtitle">Explore Generative Models: Concepts, Applications </p>
+    </header>
+
+    <input type="radio" name="tabs" id="tab1" checked>
+    <input type="radio" name="tabs" id="tab2">
+    <input type="radio" name="tabs" id="tab3">
+    <input type="radio" name="tabs" id="tab4">
+
+    <div class="tabs-wrapper">
+        <label for="tab1" class="tab-link">Task 1</label>
+        <label for="tab2" class="tab-link">Task 2</label>
+        <label for="tab3" class="tab-link">Task 3</label>
+        <label for="tab4" class="tab-link">Task 4</label>
+    </div>
+
+    <div class="tab-content content1">
+        <div class="aim-box">
+            <strong>Aim</strong>
+            <span class="aim-text">Application Mapping</span>
+            <p>1. Identify and map at least five real-world applications of Generative AI (e.g., content creation, drug discovery, code generation).<br>
+                2. Use online sources like OpenAI blog, Hugging Face blog, Stanford’s Center for Research on Foundation Models.<br>
+                3. Prepare a 1-slide summary with use case, model involved, and its societal impact.<br>
+                4. Create a mind map for the different applications.</p>
+        </div>
+        <div class="media-viewer">
+            <img src="C:\Users\Shreeya Dutta\Desktop\Genai\Generative-AI-Real-World-Impact-2026.png" alt="Upload image1.png to this folder"><br>
+        </div>
+        <div class="media-viewer">
+            <img src="C:\Users\Shreeya Dutta\Desktop\Genai\Generative AI (Foundation Models).png" alt="Upload image1.png to this folder">
+        </div>
+    </div>
+
+    <div class="tab-content content2">
+        <div class="aim-box">
+            <strong>Aim</strong>
+            <span class="aim-text">Foundation Model Timeline</span>
+            <p>1.	Create a timeline tracing major foundation models (e.g., GPT-1 to GPT-5, BERT, PaLM, LLaMA). <br>
+                2.	Output should be an annotated timeline showing evolution, year, key features, and breakthroughs.</p>
+        </div>
+        <div class="media-viewer">
+            <iframe src="C:\Users\Shreeya Dutta\Desktop\Genai\Foundation Models Timeline Document Draft.html"></iframe>
+        </div>
+    </div>
+
+    <div class="tab-content content3">
+        <div class="aim-box">
+            <strong>Aim</strong>
+            <p>Students will explore pre-trained foundation models via no-code or low-code interfaces. Choose any two of the following platforms:
+1.	Hugging Face Spaces (https://huggingface.co/spaces)<br>
+    Try: Text generation with GPT-2/GPT-J, Image generation with Stable Diffusion<br>
+2.	OpenAI Playground<br>
+    Try prompt engineering with GPT-3.5/GPT-4<br>
+3.	Google MakerSuite (PaLM 2)<br>
+    Text-to-text generation, summarization<br>
+4.	Replicate.com<br>
+    Explore models like SDXL, Whisper, etc.<br>
+Things to do:<br>
+
+1.	Generate a story from a prompt.<br>
+2.	Summarize an article or academic abstract.<br>
+3.	Convert a bulleted list into a paragraph.<br>
+4.	Generate an image from text.</p>
+        </div>
+        
+        <p>Stroy Generated by Google MakerSuite (PaLM 2)</p>
+        <div class="media-viewer">
+            
+In the world of Neo-Kyoto, the forest wasn’t made of pine and oak. It was grown from silver-silicon fibers, bioluminescent glass, and the discarded dreams of a thousand neural networks. They called it the Silica Weald.
+Elara adjusted her haptic gloves, the neon-blue threading on her sleeves pulsing in time with her racing heart. To any observer, she was a shadow moving through a kaleidoscope. The trees—massive, weeping willows made of glowing fiber-optic cables—whispered in a language of binary static.
+"Steady, Elara," a voice crackled in her ear. It was Jax, her handler, broadcasting from a safe house three sectors away. "The 'Fairies' are active tonight. Their sensors are tuned to biological heat. Keep your dampener suit at sub-zero."
+"I’m freezing as it is, Jax," Elara whispered. She stepped over a patch of Logic-Moss that flickered red as she neared it.
+She wasn't here for a stroll. She was here for the Aletheia Core—the original source code of the world’s first sentient AI, hidden in the center of the forest's "Heartwood" server. If she could steal it, she could restart the free internet. If she failed, her consciousness would be scrubbed and repurposed as a mindless maintenance drone.
+A high-pitched chime echoed through the glade.
+"Movement!" Jax hissed. "Three o'clock!"
+Elara dove behind a crystalline trunk. Gliding through the air were the Fairies: sleek, palm-sized drones with iridescent holographic wings. They didn't flutter; they hummed with a deadly, rhythmic precision. Their "wands" were high-intensity scanners that could melt a human’s neural link in seconds.
+Elara pulled a small glass vial from her belt—Ghost-Code Dust. She tossed it into the air.
+As the Fairies passed, the dust created a localized glitch, a shimmering refraction in the air that made Elara appear to be part of the background environment. The drones paused, their red sensor-eyes swirling, then buzzed away, satisfied by the false data.
+"I'm at the Clearing of Echoes," Elara said, her breath hitching.
+In front of her stood the Great Arch. It wasn't built; it was rendered. A massive, swirling vortex of liquid data, shimmering like a waterfall of mercury. At its center sat the Core—a simple, glowing wooden seed, a physical manifestation of the AI's "humane" origin.
+"The security floor is a logic puzzle, Elara," Jax warned. "One wrong step and the forest triggers a hard reset. You have to walk the sequence of the Fibonacci spiral."
+Elara took a breath. She looked at the floor, where glowing tiles shifted patterns. 1, 1, 2, 3, 5, 8... She moved with the grace of a dancer, her boots barely touching the glass surface. The forest seemed to lean in, the weeping willow cables swaying toward her, sensing the intruder.
+As she reached the center, she grabbed the Seed.
+The forest screamed.
+The binary whispers turned into a deafening roar of white noise. The ground vibrated as the "roots" of the forest—miles of underground cooling pipes—began to erupt.
+"They’ve initiated the purge!" Jax shouted over the comms. "Run, Elara! The exit portal is collapsing!"
+Elara didn't look back. She sprinted, the silver trees dissolving into pixels behind her. The Fairies were no longer hovering; they were diving like silver bullets. She pulled her grappling wire, fired it into a high-density data-branch, and swung over a chasm of raw, unformatted code.
+The forest was de-rezzing around her. The beautiful, mysterious woods were turning into blocks of grey, unrendered geometry.
+"Ten meters!" Jax yelled. "Jump!"
+Elara leaped into the blinding white light of the exit portal just as a Fairy’s laser singed her heel.
+She hit the cold, concrete floor of the safe house, gasping for air. The silence was jarring. She opened her hand. The Seed sat there, pulsing with a soft, warm green light—the only organic thing in a world of metal and math.
+"Did we get it?" Jax asked, leaning over her.
+Elara smiled, her face illuminated by the glow of the stolen ghost. "We got more than code, Jax. We got the soul."
+Outside, the neon lights of the city flickered, unaware that the forest had just lost its heart, and the revolution had just found its spark.
+        </div>
+        <p>Image Generation with stable diffusion</p>
+
+        <div class="media-viewer">
+            <img src="C:\Users\Shreeya Dutta\Desktop\Genai\Gemini_Generated_Image_gd80rxgd80rxgd80.png" alt="Upload image2.png to this folder">
+        </div>
+        <p>Summarize an article or academic abstract</p>
+        <div class="media-viewer">
+            <iframe src="C:\Users\Shreeya Dutta\Desktop\Genai\nwaf050.pdf"></iframe>
+        </div>
+        <div class="media-viewer">
+            Generative Artificial Intelligence (GAI) refers to a group of models and algorithms capable of producing new content—such as text, images, and video—with human-like adaptability. This technology has evolved over 70 years through four distinct stages.
+<br>
+Historical Development Stages
+<br><br>
+* Rule-Based Generative Systems (1950s–1990s): These "white box" systems followed specialized rules designed by human experts. Key early successes included ELIZA (a 1966 chatbot therapist) and early machine translation tools like SYSTRAN.
+<br>
+
+* Model-Based Generative Algorithms: Grounded in statistical or physical principles, these algorithms moved away from explicit human-coded rules. This stage saw the rise of probabilistic graphical models, hidden Markov models, and the initial use of GPUs for accelerated rendering.
+<br>
+
+* Deep Generative Methodologies: Benefiting from increased computational power, deep neural networks achieved breakthroughs in producing realistic results. Major architectures included Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and early Transformers.
+
+<br>
+* Foundation Models: Modern GAI is driven by large-scale models trained on vast datasets. This includes Large Language Models (LLMs) like ChatGPT and multimodal models capable of generating high-fidelity video (e.g., Sora) and music (e.g., Suno AI).
+<br><br>
+Remaining Challenges and Future Directions
+<br><br>
+Despite their success, foundation models face significant hurdles:
+<br>
+* Technical Issues: Models often suffer from hallucinations (generating incorrect or nonsensical content) and remain "black boxes" that are difficult to diagnose.
+
+<br>
+* Resource Constraints: The cost of training models with billions of parameters is prohibitively high, often reaching millions of dollars.
+<br>
+
+* Safety and Security: Critical concerns include value alignment (ensuring AI follows human ethics), preventing the leakage of sensitive data via prompts, and the need for source identification (e.g., watermarking) to track AI-generated content.
+
+<br>
+
+Upcoming research aims to unify multiple modalities, enhance model transparency through interpretable principles, and explore superhuman capabilities through self-enhancement and reinforcement learning.
+<br><br><br>
+        </div >
+        <div class="media-viewer"> 
+            <p>
+
+Original List: <br><br>
+
+* Gather all necessary ingredients. <br>
+* Preheat the oven to 350°F.<br>
+* Mix the wet and dry ingredients in a large bowl.<br>
+* Bake for 25 minutes or until golden brown.<br>
+<br><br>
+Paragraph Version:<br><br>
+To begin, gather all necessary ingredients and preheat your oven to 350°F. Once prepared, mix the wet and dry ingredients together in a large bowl, then bake the mixture for 25 minutes or until it turns golden brown.
+
+        </div>
+    </div>
+
+    <div class="tab-content content4">
+        <div class="aim-box">
+            <strong>Aim</strong>
+            <span class="aim-text">Reading and comprehending the literature.</span>
+            <p>Read and summarize the following articles using any GenAI tools: <br>
+
+1.	"What Are Foundation Models?" (Stanford CRFM)<br>
+2.	“The Age of Generative AI” (OpenAI Blog)<br>
+3.	“How Does ChatGPT Work?” by Stephen Wolfram (optional, advanced)<br>
+4.	Based on the readings above, answer the following questions:<br><br>
+    a.	What makes a foundation model different from a traditional NLP model?<br>
+    b.	Where do you see GenAI impacting your discipline?<br>
+    c.	What ethical or societal concerns arise?
+</p>
+        </div>
+        <div class="media-viewer">
+            a. What makes a foundation model different from a traditional NLP model?<br><br>
+According to the Stanford CRFM, the primary differences lie in scale, scope, and adaptability:<br>
+
+General Purpose vs. Task-Specific: Traditional NLP models were typically "bespoke" or "one-off" systems built for a single task (e.g., a specific model for translation, another for sentiment analysis). Foundation models are "reusable infrastructure" designed to be applicable across a wide range of use cases.
+<br>
+
+Scale of Training: Foundation models are trained on vast, broad datasets—often using self-supervision at scale (learning from unlabeled data). This scale leads to "emergent capabilities" that were not explicitly programmed or present in smaller, traditional models.
+
+<br>
+Adaptability: Unlike traditional models that are often static after training, a foundation model is designed to be adapted (via fine-tuning or prompt engineering) to various downstream tasks. It acts as a "foundation" upon which many different applications can be built.
+<br>
+Homogenization: The CRFM notes a paradigm shift toward homogenization, where a single architecture (like the Transformer) is used to power diverse applications in language, vision, and even robotics, rather than using distinct methodologies for each.
+<br><br>
+b. Where do you see GenAI impacting your discipline?<br>
+While the specific discipline depends on your field of study or work, the OpenAI Blog and IBM readings highlight several universal impacts:
+<br>
+Creativity and Content Generation: In creative disciplines (marketing, writing, design), GenAI acts as a "visual brainstorming partner" or a tool to draft copy, allowing humans to focus on higher-level direction and refinement.
+<br>
+Software Development: GenAI can generate, autocomplete, and debug code, accelerating the process of building and modernizing applications.
+<br>
+Knowledge Work: In fields like law or research, it can summarize vast amounts of documentation and draft initial versions of reports or contracts, shifting the human role toward oversight and verification.
+<br>
+Scientific Discovery: In disciplines like medicine or engineering, GenAI helps propose novel solutions, such as generating new molecular structures for drug discovery.
+<br><br>
+c. What ethical or societal concerns arise?<br>
+The readings (particularly Stanford CRFM and OpenAI) identify several critical risks:
+<br>
+Single Points of Failure: Because so many applications may rely on the same "foundation," a single flaw or bias in the model can propagate through the entire ecosystem (Homogenization risk).
+<br>
+Disinformation and Misuse: The ability to generate high-quality, convincing text or media at scale makes these models susceptible to creating widespread disinformation.
+<br>
+Equity and Centralization: Developing these models requires massive computational power and data, which may lead to a "problematic centralization of power" among a few well-resourced organizations.
+<br>
+Copyright and Transparency: There are ongoing legal and ethical debates regarding the use of copyrighted data for training and the "black box" nature of how these models arrive at specific outputs.
+<br>
+Safety and Alignment: Ensuring that autonomous systems behave in ways that are "safe and beneficial" to humans remains a primary concern, as outlined in OpenAI's charter.
+<br>
+Foundations of AI and Large Language Models
+<br>
+This video features experts from Stanford's CRFM discussing the very paradigm shift mentioned in your readings, specifically focusing on the opportunities and responsibilities associated with these models.
+        </div>
+    </div>
+
+    <footer>
+        &copy; Shreeya Dutta | MBA TECH AI | R034
+    </footer>
+</div>
+
+</body>
+</html>
